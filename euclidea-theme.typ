@@ -54,14 +54,15 @@
 )
 
 // header style
-#let header-fn = self => [
+#let header-fn(steps) = self => [
   #text(fill: gray, size: .8em, utils.display-current-heading(level: 2))
   #h(1fr)
-  #text(fill: gray, size: .8em, show-step(self))
+  #if steps [#text(fill: gray, size: .8em, show-step(self))]
 ]
 
 // euclidea-theme
 #let euclidea-theme(
+  show-steps: true,
   aspect-ratio: "16-9",
   handout: true,
   lang: "de",
@@ -77,7 +78,7 @@
       ..utils.page-args-from-aspect-ratio(aspect-ratio),
       margin: (x: 2cm, top: 2cm, bottom: 2cm),
       header-ascent: 20%,
-      header: header-fn
+      header: header-fn(show-steps)
     ),
     config-common(
       slide-fn: slide,
