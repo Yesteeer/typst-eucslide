@@ -1,0 +1,7 @@
+[package]
+name = "eucslide"
+version = "0.1.0"
+entrypoint = "lib.typ"
+categories = [ ]
+disciplines = [ ]
+description = "step-by-step euclidian geometry contructions"
