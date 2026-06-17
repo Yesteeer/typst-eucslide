@@ -8,14 +8,15 @@
   status, 
   colors: (
     initial: 1.5pt + black, 
-    temp: 1pt + blue, 
+    temp: 1pt + gray,
+    normal: 1pt + blue, 
     result: 1.5pt + red, 
-    help: 1pt + gray,
+    annot: 1pt + gray,
   ),
 ) = {
   assert(
-    status in ("initial", "temp", "help", "result"), 
-    message: "status must be \"initial\", \"temp\", \"help\" or \"result\""
+    status in ("initial", "temp", "normal", "annot", "result"), 
+    message: "status must be \"initial\", \"temp\", \"normal\", \"annot\" or \"result\""
   )
   return colors.at(status)
 }
@@ -31,9 +32,12 @@
     cetz.draw.set-style(stroke: status-color) 
   }
   else if status == "temp" {
+    cetz.draw.set-style(stroke: none)
+  }
+  else if status == "normal" {
     cetz.draw.set-style(stroke: status-color.thickness + status-color.paint.lighten(70%))
   }
-  else if status == "help" {
+  else if status == "annot" {
     cetz.draw.set-style(stroke: status-color.thickness + status-color.paint)
   }
   else {
@@ -71,7 +75,7 @@
   coords, 
   radius: 4pt, 
   fill: white, 
-  status: "temp", 
+  status: "normal", 
   ..args
 ) = {
   update-color(status)
@@ -82,7 +86,7 @@
   coords, 
   radius: 4pt, 
   fill: white, 
-  status: "temp", 
+  status: "normal", 
   ..args
 ) = {
   on-layer(status, cetz.draw.circle(coords, radius: radius, fill: fill, ..args), is-point: true)
@@ -92,7 +96,7 @@
 #let segment(
   start, 
   end, 
-  status: "temp", 
+  status: "normal", 
   last: true, 
   ..args
 ) = {
@@ -108,7 +112,7 @@
 #let segline(
   start, 
   end, 
-  status: "temp", 
+  status: "normal", 
   ..args
 ) = {
   update-color(status)
@@ -121,7 +125,7 @@
 
 // circle 
 #let circle(
-  status: "temp", 
+  status: "normal", 
   ..args
 ) = {
   update-color(status)
@@ -133,7 +137,7 @@
   start, 
   end, 
   extend: (1,1), 
-  status: "temp", 
+  status: "normal", 
   ..args
 ) = {
   let extend = if type(extend) == array {extend} else {(extend, extend)}
@@ -157,7 +161,7 @@
   length: 6pt, 
   number: 1, 
   spacing: 4pt, 
-  status: "help", 
+  status: "annot", 
   ..args
 ) = {
   let mid-pt = (start, 50%, end)
@@ -173,7 +177,7 @@
   a, 
   b, 
   length: 4pt, 
-  status: "help", 
+  status: "annot", 
   ..args
 ) = {
   update-color(status)
@@ -190,7 +194,7 @@
   b, 
   length: .5, 
   offset: .2, 
-  status: "help", 
+  status: "annot", 
   ..args
 ) = {
   update-color(status)
