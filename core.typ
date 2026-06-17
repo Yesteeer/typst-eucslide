@@ -162,7 +162,7 @@
 ) = {
   let mid-pt = (start, 50%, end)
   for i in range(number) {
-    let tmp-pt = (mid-pt, spacing * (i - 1 + (1 - number) / 2), start)
+    let tmp-pt = (mid-pt, spacing * (i + (1 - number) / 2), start)
     line((tmp-pt, length, 90deg, start), (tmp-pt, length, -90deg, start), status: status, ..args)
   }
 }
