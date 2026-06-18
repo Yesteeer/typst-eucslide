@@ -132,6 +132,16 @@
   on-layer(status, cetz.draw.circle(..args))
 }
 
+
+// arc
+#let arc(
+  status: "normal",
+  ..args
+) = {
+  update-color(status)
+  on-layer(status, cetz.draw.arc(..args))
+}
+
 // line
 #let line(
   start, 

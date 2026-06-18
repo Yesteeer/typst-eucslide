@@ -3,6 +3,7 @@
   segment as eucl-segment, 
   segline as eucl-segline, 
   circle as eucl-circle,
+  arc as eucl-arc,
   line as eucl-line,
   tick as eucl-tick,
   angle-tick as eucl-angle-tick,
