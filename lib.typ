@@ -4,6 +4,7 @@
   segline as eucl-segline, 
   circle as eucl-circle,
   arc as eucl-arc,
+  arc-through as eucl-arc-through,
   line as eucl-line,
   tick as eucl-tick,
   angle-tick as eucl-angle-tick,

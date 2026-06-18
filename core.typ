@@ -97,7 +97,6 @@
   start, 
   end, 
   status: "normal", 
-  last: true, 
   ..args
 ) = {
   update-color(status)
@@ -140,6 +139,15 @@
 ) = {
   update-color(status)
   on-layer(status, cetz.draw.arc(..args))
+}
+
+// arc-through
+#let arc-through(
+  status: "normal",
+  ..args
+) = {
+  update-color(status)
+  on-layer(status, cetz.draw.arc-through(..args))
 }
 
 // line
